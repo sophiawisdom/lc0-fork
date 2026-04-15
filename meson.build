@@ -907,10 +907,20 @@ endif
 configure_file(output : 'default_backend.h',
                configuration : default_backend_h)
 
+raw_dense_sources = common_files + files + ['src/tools/lc0_raw_dense_shim.cc']
+
 if get_option('lc0')
   files += common_files
   executable('lc0', 'src/main.cc',
        files, include_directories: includes, dependencies: deps, install: true)
+endif
+
+if get_option('batch_play_shim')
+  shared_library('lc0_raw_dense',
+       raw_dense_sources,
+       include_directories: includes,
+       dependencies: deps,
+       install: true)
 endif
 
 #############################################################################

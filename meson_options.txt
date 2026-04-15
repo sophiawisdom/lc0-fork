@@ -188,6 +188,11 @@ option('python_bindings',
        value: false,
        description: 'Build Python bindings for the python to bind.')
 
+option('batch_play_shim',
+       type: 'boolean',
+       value: false,
+       description: 'Build liblc0_raw_dense shared library for batched dense raw inference.')
+
 option('cc_cuda',
        type: 'string',
        value: '',
